@@ -1,14 +1,10 @@
 /**
- * steel css postfix 42px
+ * Add css postfix 42px
  * @author Lonefy@foxmail.com
  */
 'use strict';
 var through = require('through2');
 var gutil = require('gulp-util');
-var extend = require('util')._extend;
-var path = require('path');
-var fs = require('fs');
-var PluginError = gutil.PluginError;
 
 module.exports = function (options) {
     options = options || {};
@@ -22,28 +18,30 @@ module.exports = function (options) {
         }
 
         if (file.isStream()) {
-            this.emit('error', new gutil.PluginError(PLUGIN_NAME, 'Streaming not supported'));
+            this.emit('error', new gutil.PluginError('css_postfix', 'Streaming not supported'));
             return cb();
         }
 
         var path = file.path.replace(/\\/g, "/").replace(/\.css$/g,'');//for winPath
+        path = path.substr(path.indexOf('/css/') + 5);
+    
+        if(isHas(options.filter, path)){
 
-        if(isHas(options.filter,file.path)){
-            //包含所过滤字段
-            
-            //生成CSS endline 
-            var endLine = path.substr(path.indexOf('/css/') + 5);
+            //generate endline 
+            var endLine = path;
 
             endLine = ["#S","CSS"].concat(endLine.split('/')).join("_") + '{height:42px;}';
 
+            //console.log(endLine);
             var content = file.contents.toString() + endLine;
 
             file.contents = new Buffer(content);
-            
+        
         }
         self.push(file);
         cb();
     });
+
 
     function isHas(filter, text){
         if(!filter) return true;
