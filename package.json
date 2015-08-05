@@ -1,0 +1,38 @@
+{
+  "name": "gulp-steel-css-postfix",
+  "version": "0.0.1",
+  "description": "steel css postfix",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lonefy/gulp-steel-css-postfix"
+  },
+  "author": {
+    "name": "Lonefy",
+    "email": "",
+    "url": "http://codezz.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [
+    "steel"
+  ],
+  "dependencies": {
+    "through2": "^0.6.3",
+    "gulp-util": "^3.0.2"
+  },
+  "devDependencies": {},
+  "main": "index.js",
+  "homepage": "https://github.com/finrila/gulp-steel-css-postfix",
+  "readme": "# gulp-steel-css-postfix\n",
+  "readmeFilename": "readme.md",
+  "bugs": {
+    "url": "https://github.com/lonefy/gulp-steel-css-postfix/issues"
+  },
+  "_id": "gulp-steel-css-postfix@0.0.1",
+  "_from": "gulp-steel-css-postfix@*"
+}
