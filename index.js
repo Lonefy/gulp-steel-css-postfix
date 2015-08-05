@@ -8,22 +8,12 @@ var gutil = require('gulp-util');
 var extend = require('util')._extend;
 var path = require('path');
 var fs = require('fs');
+var PluginError = gutil.PluginError;
 
-///////////////////
-
-// var through = require('through2');
-// var gutil = require('gulp-util');
-// var PluginError = gutil.PluginError;
-
-//filter
 module.exports = function (options) {
     options = options || {};
     return through.obj(function (file, enc, cb) {
 
-
-        //options.fliter = ['pages','lib']
-        // console.log(file.path);
-        // console.log(isHas(options.fliter,file.path));
         var self = this;
 
         if (file.isNull()) {
@@ -46,7 +36,6 @@ module.exports = function (options) {
 
             endLine = ["#S","CSS"].concat(endLine.split('/')).join("_") + '{height:42px;}';
 
-            console.log(endLine);
             var content = file.contents.toString() + endLine;
 
             file.contents = new Buffer(content);
@@ -55,7 +44,6 @@ module.exports = function (options) {
         self.push(file);
         cb();
     });
-
 
     function isHas(filter, text){
         if(!filter) return true;
