@@ -5,6 +5,8 @@
 'use strict';
 var through = require('through2');
 var gutil = require('gulp-util');
+var minimatch = require("minimatch");
+
 
 module.exports = function (options) {
     options = options || {};
@@ -22,17 +24,17 @@ module.exports = function (options) {
             return cb();
         }
 
-        var path = file.path.replace(/\\/g, "/").replace(/\.css$/g,'');//for winPath
-        path = path.substr(path.indexOf('/css/') + 5);
-    
-        if(isHas(options.filter, path)){
+   
+        var path = file.path.replace(/\\/g, "/")//for winPath
 
-            //generate endline 
-            var endLine = path;
+        path = path.substr(path.indexOf('/css/') + 5);
+        
+        if(isHas(options.filter, path)){
+          
+            var endLine = path.replace(/\.css$/g,'');
 
             endLine = ["#S","CSS"].concat(endLine.split('/')).join("_") + '{height:42px;}';
 
-            //console.log(endLine);
             var content = file.contents.toString() + endLine;
 
             file.contents = new Buffer(content);
@@ -50,14 +52,8 @@ module.exports = function (options) {
         filter = [].concat(filter);
           
         for(var i=0, len=filter.length; i<len; i++){
-
-            var _f = filter[i];
-            if(typeof _f == 'string'){
-                flag |= text.indexOf(_f) == -1? false: true;
-            }
-            else{
-                flag |= _f.test(text);
-            }
+        
+            flag |= minimatch(text, filter[i]);
 
             if(flag) return true;
         }
