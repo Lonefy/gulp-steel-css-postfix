@@ -23,7 +23,8 @@
   ],
   "dependencies": {
     "through2": "^0.6.3",
-    "gulp-util": "^3.0.2"
+    "gulp-util": "^3.0.2",
+    "minimatch": "*"
   },
   "devDependencies": {},
   "main": "index.js",
