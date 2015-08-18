@@ -10,23 +10,22 @@ use glob pattern to filter your file path;
 
     In your steel-gulpfile, you can use in this way:
 ```JavaScript
-        var $ = require('gulp-load-plugins')();
+var $ = require('gulp-load-plugins')();
 
-        $.steelCssPostfix({ 
-        	filter:["lib/*.*","pages/*.*"] 
-        })
+$.steelCssPostfix({ 
+	filter:["lib/*.*","pages/*.*"] 
+})
 ```
 
 ###Example
----------
     If your file path is "src/css/pages/pageA.css", the filter(sub-path) pattern should be "pages/*.*", like:
 ```JavaScript
-        function testCss(){
-         gulp.src(['src/css/**/*.*'])
-                .pipe($.steelCssPostfix({ 
-                     filter:["pages/pointsmall/*.*"] 
-                }))
-        .pipe(gulp.dest(front_base + '/css/'));
-        }
+function testCss(){
+ gulp.src(['src/css/**/*.*'])
+        .pipe($.steelCssPostfix({ 
+             filter:["pages/pointsmall/*.*"] 
+        }))
+.pipe(gulp.dest(front_base + '/css/'));
+}
 ```
     in the function testCss, the whole file path is "src/css/pages/pointsmall/*.*"
