@@ -1,7 +1,7 @@
 #gulp-steel-css-postfix
-===========
-#Usage
--------
+
+###Usage
+
 use glob pattern to filter your file path;
 
     the filter could also be Array or String, like: 
@@ -9,18 +9,18 @@ use glob pattern to filter your file path;
         {filter:"lib/*.*"}
 
     In your steel-gulpfile, you can use in this way:
-
+```JavaScript
         var $ = require('gulp-load-plugins')();
 
         $.steelCssPostfix({ 
         	filter:["lib/*.*","pages/*.*"] 
         })
+```
 
-
-#Example
+###Example
 ---------
     If your file path is "src/css/pages/pageA.css", the filter(sub-path) pattern should be "pages/*.*", like:
-
+```JavaScript
         function testCss(){
          gulp.src(['src/css/**/*.*'])
                 .pipe($.steelCssPostfix({ 
@@ -28,5 +28,5 @@ use glob pattern to filter your file path;
                 }))
         .pipe(gulp.dest(front_base + '/css/'));
         }
-
+```
     in the function testCss, the whole file path is "src/css/pages/pointsmall/*.*"
