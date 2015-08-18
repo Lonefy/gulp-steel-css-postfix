@@ -26,7 +26,7 @@ function testCss(){
         .pipe($.steelCssPostfix({ 
              filter:["pages/pointsmall/*.*"] 
         }))
-.pipe(gulp.dest(front_base + '/css/'));
+	.pipe(gulp.dest(front_base + '/css/'));
 }
 ```
     in the function testCss, the whole file path is "src/css/pages/pointsmall/*.*"
