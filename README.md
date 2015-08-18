@@ -11,9 +11,9 @@ the filter could also be Array or String, like:
 ```
 In your steel-gulpfile, you can use in this way:
 ```JavaScript
-var $ = require('gulp-load-plugins')();
+var gscp = require('gulp-steel-css-postfix');
 
-$.steelCssPostfix({ 
+gscp({ 
 	filter:["lib/*.*","pages/*.*"] 
 })
 ```
