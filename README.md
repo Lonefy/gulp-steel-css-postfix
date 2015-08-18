@@ -19,14 +19,15 @@ $.steelCssPostfix({
 ```
 
 ###Example
-    If your file path is "src/css/pages/pageA.css", the filter(sub-path) pattern should be "pages/*.*", like:
+If your file path is "src/css/pages/pageA.css", 
+the filter(sub-path) pattern should be "pages/*.*", like:
 ```JavaScript
 function testCss(){
- gulp.src(['src/css/**/*.*'])
+	gulp.src(['src/css/**/*.*'])
         .pipe($.steelCssPostfix({ 
              filter:["pages/pointsmall/*.*"] 
         }))
 	.pipe(gulp.dest(front_base + '/css/'));
 }
 ```
-    in the function testCss, the whole file path is "src/css/pages/pointsmall/*.*"
+In the function testCss, the whole file path is "src/css/pages/pointsmall/*.*"
