@@ -4,11 +4,12 @@
 
 use glob pattern to filter your file path;
 
-    the filter could also be Array or String, like: 
-        {filter:["pages/*.*"]} 
-        {filter:"lib/*.*"}
-
-    In your steel-gulpfile, you can use in this way:
+the filter could also be Array or String, like: 
+```JavaScript
+{filter:["pages/*.*"]} 
+{filter:"lib/*.*"}
+```
+In your steel-gulpfile, you can use in this way:
 ```JavaScript
 var $ = require('gulp-load-plugins')();
 
