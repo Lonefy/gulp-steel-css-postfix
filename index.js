@@ -24,10 +24,9 @@ module.exports = function (options) {
             return cb();
         }
 
-        var p = file.path.replace(/\\/g, "/")
-          , filepost = path.extname(p);
+        var p = file.path.replace(/\\/g, "/");
 
-        if(filepost !== '.css'){
+        if(path.extname(p) !== '.css'){
             return cb();
         }
 
