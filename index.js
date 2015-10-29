@@ -6,7 +6,7 @@
 var through = require('through2');
 var gutil = require('gulp-util');
 var minimatch = require("minimatch");
-
+var path = require('path');
 
 module.exports = function (options) {
     options = options || {};
@@ -24,21 +24,24 @@ module.exports = function (options) {
             return cb();
         }
 
-   
-        var path = file.path.replace(/\\/g, "/")//for winPath
+        var p = file.path.replace(/\\/g, "/")
+          , filepost = path.extname(p);
 
-        path = path.substr(path.indexOf('/css/') + 5);
+        if(filepost !== '.css'){
+            return cb();
+        }
+
+        var reg = new RegExp(file.base.replace(/\\/g, "/"),'g');
         
-        if(isHas(options.filter, path)){
-          
-            var endLine = path.replace(/\.css$/g,'');
+        p = p.replace(reg,"");
+        if(isHas(options.filter, p)){
+            
+            var endLine = p.replace(/\.\w+$/g, "");
 
             endLine = ["#S","CSS"].concat(endLine.split('/')).join("_") + '{height:42px;}';
 
             var content = file.contents.toString() + endLine;
-
             file.contents = new Buffer(content);
-        
         }
         self.push(file);
         cb();
@@ -60,4 +63,5 @@ module.exports = function (options) {
 
         return false;
     }
+
 };
