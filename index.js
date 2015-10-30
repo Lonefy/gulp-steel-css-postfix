@@ -48,7 +48,7 @@ module.exports = function (options) {
 
 
     function isHas(filter, text){
-        if(!filter) return true;
+        if(!filter) return false;
         
         var flag = false;
         filter = [].concat(filter);
