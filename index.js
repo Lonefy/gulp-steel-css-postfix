@@ -12,21 +12,16 @@ module.exports = function (options) {
     options = options || {};
     return through.obj(function (file, enc, cb) {
 
-        var self = this;
+        var self = this,
+            p = file.path.replace(/\\/g, "/");
 
-        if (file.isNull()) {
+        if (file.isNull() || path.extname(p) !== '.css') {
             this.push(file);
             return cb();
         }
 
         if (file.isStream()) {
             this.emit('error', new gutil.PluginError('css_postfix', 'Streaming not supported'));
-            return cb();
-        }
-
-        var p = file.path.replace(/\\/g, "/");
-
-        if(path.extname(p) !== '.css'){
             return cb();
         }
 
